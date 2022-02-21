@@ -1,0 +1,196 @@
+﻿@page "/dashboard"
+@model DashboardModel
+@using Newtonsoft.Json
+
+@{
+    ViewData["Title"] = "Dashboard";
+
+    Dictionary<string, string> userDetails = JsonConvert.DeserializeObject<Dictionary<string, string>>(Convert.ToString(ViewData["userDetails"]));
+}
+
+<section>
+    @* notification *@
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success">
+                <strong class="text-white me-auto">Success</strong>
+            </div>
+            <div id="msg" class="toast-body">
+                <p id="test"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-5 p-5" style="box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; height: 100%;">
+            
+                <div class="card-header p-3 bg-dark">
+                    <h6 class="text-light">Create notes</h6>
+                </div>
+                <div class="card-body px-3 py-2">
+                    <div id="notes-tab">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#regular" type="button" role="tab">Regular</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#reminder" type="button" role="tab">Reminder</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#todo" type="button" role="tab">Todo</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bookmark" type="button" role="tab">Bookmark</button>
+                            </li>
+                        </ul>
+
+                        
+                        <div class="tab-content py-3" id="myTabContent">
+                            @* regular section*@
+                            <div class="tab-pane fade show active" id="regular" role="tabpanel">
+                                <div class="text-center mb-3">
+                                    <h5>Add regular note</h5>
+                                </div>
+                                <div>
+                                    <form class="myNote" method="post">
+
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Title" name="title" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Write text" name="text" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input class="form-control d-none" type="text" readonly name="type" value="Regular" required>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-dark saveBtn">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            @* reminder section*@
+                            <div class="tab-pane fade" id="reminder" role="tabpanel">
+                                <div class="text-center mb-3">
+                                    <h5>Add a reminder</h5>
+                                </div>
+                                <div>
+                                    <form class="myNote" method="post">
+
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Title" name="title" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" placeholder="Write text" class="form-control" name="text" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="date" class="form-label">Datetime</label>
+                                            <input type="datetime-local" name="datetime" required class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control d-none" readonly name="type" value="Reminder" required>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-dark saveBtn">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            @* todo section*@
+                            <div class="tab-pane fade" id="todo" role="tabpanel">
+                                <div class="text-center mb-3">
+                                    <h5>Add a task</h5>
+                                </div>
+                                <div>
+                                    <form class="myNote" method="post">
+
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Title" name="title" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" placeholder="Write text" class="form-control" name="text" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="date" class="form-label">Task Due:</label>
+                                            <input type="datetime-local" name="dueDateTime" required class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control d-none" readonly name="type" value="Todo" required>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-dark saveBtn">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            @* bookmark section*@
+                            <div class="tab-pane fade" id="bookmark" role="tabpanel">
+                                <div class="text-center mb-3">
+                                    <h5>Save a bookmark</h5>
+                                </div>
+                                <div>
+                                    <form class="myNote" method="post">
+
+                                        <div class="mb-3">
+                                            <input class="form-control" type="text" placeholder="Title" name="title" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" placeholder="URL" class="form-control" name="noteUrl" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="text" class="form-control d-none" readonly name="type" value="Bookmark" required>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-dark saveBtn">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            
+        </div>
+        <div class="col-md-7">
+            <div class="card-body p-2 ">
+                <select class="form-select mb-2" id="searchNotes">
+                    <option value="empty" selected>Search notes</option>
+                    <option value="day">Today</option>
+                    <option value="week">This week</option>
+                    <option value="month">This month</option>
+
+                </select>
+                <div class="card-header p-1 bg-black">
+                    <h3 class="text-center text-light">All Notes</h3>
+                </div>
+                @* all notes will be added here *@
+                <div id="notesContainer" class="p-5" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+
+                </div>
+            </div>
+            
+
+        </div>
+
+
+    </div>
+
+    
+    <form>
+     
+        <div>
+            <input type="text" class="d-none" id="authorizeToken" readonly value="@ViewData["userDetails"]" />
+        </div>
+    </form>
+
+</section>
+
+@section Scripts{
+    
+    <script type="module" src="~/js/saveNotesRequest.js"></script>
+    <script type="module" src="~/js/searchNotesRequest.js"></script>
+    <script type="module" src="~/js/todoUpdateRequest.js"></script>
+}

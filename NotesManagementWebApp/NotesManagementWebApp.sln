@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesManagementBackend", "NotesManagementBackend\NotesManagementBackend.csproj", "{409FE90E-AD63-4B13-BF2A-93D11175BDA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotesManagementFrontend", "NotesManagementFrontend\NotesManagementFrontend.csproj", "{5DDD7212-52EF-47D3-A055-BADFBD3EBAD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{409FE90E-AD63-4B13-BF2A-93D11175BDA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{409FE90E-AD63-4B13-BF2A-93D11175BDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{409FE90E-AD63-4B13-BF2A-93D11175BDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{409FE90E-AD63-4B13-BF2A-93D11175BDA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DDD7212-52EF-47D3-A055-BADFBD3EBAD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DDD7212-52EF-47D3-A055-BADFBD3EBAD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DDD7212-52EF-47D3-A055-BADFBD3EBAD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DDD7212-52EF-47D3-A055-BADFBD3EBAD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D86C7A91-C061-4267-9DEE-0D75DDCC43FF}
+	EndGlobalSection
+EndGlobal

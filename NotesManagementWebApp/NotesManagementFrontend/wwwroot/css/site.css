@@ -1,0 +1,24 @@
+﻿@import url("./bootstrap.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Baloo 2', cursive;
+}
+
+section {
+    padding:40px 0px;
+}
+
+#form {
+    padding:10px;
+}
+
+footer {
+    color: #ffffff !important;
+}
+button.active { 
+    box-shadow: inset 0 -2px 0 #000000 !important;
+}
+
+
